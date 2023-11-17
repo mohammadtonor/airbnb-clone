@@ -38,6 +38,11 @@ const LoginModal = () => {
     },
   });
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  },[])
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
@@ -63,7 +68,10 @@ const LoginModal = () => {
 
   const boodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="create an Acount" center />
+      <Heading
+        title="Welcome back"
+        subtitle="Login in your Acount"
+      />
       <Input
         id="email"
         label="Email"
@@ -92,13 +100,13 @@ const LoginModal = () => {
         outline
         label="continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => {signIn('google')}}
       />
       <Button
         outline
         label="continue with Github"
         icon={AiFillGithub}
-        onClick={() => {signIn}}
+        onClick={() => {signIn('github')}}
       />
       <div
         className="
@@ -108,14 +116,15 @@ const LoginModal = () => {
                   font-light
                 ">
         <div className="flex flex-row items-center justify-center gap-2">
-          <div>Already have account?</div>
+          <div>First time using Airbnb</div>
           <div
+            onClick={toggle}
             className="
                       text-neutral-800
                       cursor-pointer
                       hover:underline
                     ">
-            Login
+            Create an account!
           </div>
         </div>
       </div>
@@ -126,7 +135,7 @@ const LoginModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={loginModal.isOpen}
-      title="Register"
+      title="Login"
       actionLabel="Continue"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
