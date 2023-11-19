@@ -59,7 +59,7 @@ model Listing {
   price Int
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  reservation Reservation[]
+  reservations Reservation[]
 }
 
 model Reservation {
