@@ -13,7 +13,7 @@ import {
 } from "react-hook-form";
 
 import Modal from "./Modal";
-import Heading from "./Heading";
+import Heading from "../Heading";
 import Input from "@/app/components/input/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
@@ -41,37 +41,33 @@ const LoginModal = () => {
   const toggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
-  },[])
+  }, []);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials',{
+    signIn("credentials", {
       ...data,
       redirect: false,
-    })
-      .then((callback) => {
-        setIsLoading(false)
-        console.log(callback);
-        
-        if (callback?.ok) {
-          toast.success('loged in');
-          router.refresh();
-          loginModal.onClose();
-        }
+    }).then((callback) => {
+      setIsLoading(false);
+      console.log(callback);
 
-        if (callback?.error) {
-          toast.error(callback.error);
-        }
-      })
+      if (callback?.ok) {
+        toast.success("loged in");
+        router.refresh();
+        loginModal.onClose();
+      }
+
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
 
   const boodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading
-        title="Welcome back"
-        subtitle="Login in your Acount"
-      />
+      <Heading title="Welcome back" subtitle="Login in your Acount" />
       <Input
         id="email"
         label="Email"
@@ -80,7 +76,7 @@ const LoginModal = () => {
         errors={errors}
         required
       />
-      
+
       <Input
         id="password"
         label="password"
@@ -100,13 +96,17 @@ const LoginModal = () => {
         outline
         label="continue with Google"
         icon={FcGoogle}
-        onClick={() => {signIn('google')}}
+        onClick={() => {
+          signIn("google");
+        }}
       />
       <Button
         outline
         label="continue with Github"
         icon={AiFillGithub}
-        onClick={() => {signIn('github')}}
+        onClick={() => {
+          signIn("github");
+        }}
       />
       <div
         className="

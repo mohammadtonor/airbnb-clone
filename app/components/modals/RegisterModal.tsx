@@ -13,11 +13,11 @@ import {
 
 import useRegisterModal from "@/app/hooks/userRegisterModal";
 import Modal from "./Modal";
-import Heading from "./Heading";
+import Heading from "../Heading";
 import Input from "@/app/components/input/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
-import { signIn } from 'next-auth/react';
+import { signIn } from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
@@ -39,8 +39,8 @@ const RegisterModal = () => {
 
   const toggle = useCallback(() => {
     registerModal.onClose();
-    loginModal.onOpen()
-  },[loginModal,registerModal])
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
@@ -60,10 +60,7 @@ const RegisterModal = () => {
 
   const boodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading
-        title="Welcome to Airbnb"
-        subtitle="create an Acount"
-      />
+      <Heading title="Welcome to Airbnb" subtitle="create an Acount" />
       <Input
         id="email"
         label="Email"
@@ -99,13 +96,17 @@ const RegisterModal = () => {
         outline
         label="continue with Google"
         icon={FcGoogle}
-        onClick={() => {signIn('google')}}
+        onClick={() => {
+          signIn("google");
+        }}
       />
       <Button
         outline
         label="continue with Github"
         icon={AiFillGithub}
-        onClick={() => {signIn('github')}}
+        onClick={() => {
+          signIn("github");
+        }}
       />
       <div
         className="

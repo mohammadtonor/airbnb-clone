@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../input/CategoryInput";
-import Heading from "./Heading";
+import Heading from "../Heading";
 import CountrySelect from "../input/CountrySelec";
 import dynamic from "next/dynamic";
 import Counter from "../input/Counter";
