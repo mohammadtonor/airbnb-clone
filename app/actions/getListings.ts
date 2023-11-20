@@ -16,13 +16,18 @@ export default async function getListing(
             query.userId = userId;
         }
 
-        const listing = await prisma.listing.findMany({
-            where:query,
+        const listings = await prisma.listing.findMany({
+            where: query,
             orderBy: {
                 createdAt: 'desc'
             }
-        })
-        return listing;
+        });
+
+        const safeListing = listings.map((listing) => ({
+            ...listing,
+            createdAt: listing.createdAt.toString(),
+        })) 
+        return safeListing;
     } catch (error: any) {
         throw new Error(error)
     }    
