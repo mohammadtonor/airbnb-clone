@@ -6,7 +6,7 @@ import useFavorite from "../hooks/useFavorite";
 
 interface HeaderButtonProps {
     listingId: string;
-    currentUser: SafeUser | null;
+    currentUser?: SafeUser | null;
 }
 
 const HeaderButton: React.FC<HeaderButtonProps> = ({
