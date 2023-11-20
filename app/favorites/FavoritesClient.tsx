@@ -8,7 +8,7 @@ import { SafeListing, SafeUser } from "../types";
 
 interface FavoritesClientProps {
     listings: SafeListing[];
-    currentUser?: SafeUser | null;
+    currentUser: SafeUser | null;
 }
 
 const FavoritesClient: React.FC<FavoritesClientProps> = ({
