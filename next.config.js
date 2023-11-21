@@ -5,6 +5,9 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "res.cloudinary.com"],
   },
+  experimental: {
+    appDir: true,
+  },
 };
 
 module.exports = nextConfig;
